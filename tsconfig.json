@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "rootDir": "./src",
-        "outDir": "./public",
-        "strict": true
+        "strict": true,
+        "pretty": true,
+        "module": "CommonJS"
     }
 }

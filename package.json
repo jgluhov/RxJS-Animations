@@ -22,5 +22,9 @@
   "homepage": "https://github.com/jgluhov/RxJS-Animations#readme",
   "dependencies": {
     "rxjs": "^5.5.6"
+  },
+  "devDependencies": {
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2"
   }
 }

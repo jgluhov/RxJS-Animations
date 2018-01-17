@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/jgluhov/RxJS-Animations/issues"
   },
-  "homepage": "https://github.com/jgluhov/RxJS-Animations#readme"
+  "homepage": "https://github.com/jgluhov/RxJS-Animations#readme",
+  "dependencies": {
+    "rxjs": "^5.5.6"
+  }
 }

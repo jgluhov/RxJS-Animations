@@ -1,1 +1,2 @@
-console.log('Hello');
+"use strict";
+var some = 4;

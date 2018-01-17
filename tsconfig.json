@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "rootDir": "./src",
-        "outDir": "./public"
+        "outDir": "./public",
+        "strict": true
     }
 }

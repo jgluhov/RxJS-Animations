@@ -1,0 +1,23 @@
+{
+  "name": "rxjs-animations",
+  "version": "1.0.0",
+  "description": "Creating animations by using RxJS library",
+  "main": "public/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgluhov/RxJS-Animations.git"
+  },
+  "keywords": [
+    "rxjs",
+    "animations"
+  ],
+  "author": "jgluhov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jgluhov/RxJS-Animations/issues"
+  },
+  "homepage": "https://github.com/jgluhov/RxJS-Animations#readme"
+}

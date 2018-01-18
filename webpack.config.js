@@ -17,5 +17,12 @@ module.exports = {
             }        
         ]
     },
-    watch: true
+    devtool: "inline-source-map",
+    watch: true,
+    devServer: {
+        contentBase: path.join(__dirname, "public"),
+        compress: true,
+        port: 9000,
+        historyApiFallback: true
+    }
 }

@@ -17,8 +17,7 @@ module.exports = {
             }        
         ]
     },
-    devtool: "inline-source-map",
-    watch: true,
+    devtool: "inline-cheap-module-source-map",
     devServer: {
         contentBase: path.join(__dirname, "public"),
         compress: true,

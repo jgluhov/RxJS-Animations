@@ -4,3 +4,9 @@
     width: 50px;
     background-color: coral
 }
+
+.ball-container {
+    width: 500px;
+    display: flex;
+    justify-content: space-between
+}

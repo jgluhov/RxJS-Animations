@@ -1,3 +1,7 @@
+body {
+    display: flex;
+}
+
 .ball {
     border-radius: 50%;
     height: 50px;
@@ -9,4 +13,26 @@
     width: 500px;
     display: flex;
     justify-content: space-between
+}
+
+.clock-container {
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    display: flex
+}
+
+.hand {
+    height: 320px;
+}
+
+.hand::before {
+    content: '';
+    width: 0px;
+    height: 0px;
+    border-right: 10px solid #0000;
+    border-top: 300px solid #0000;
+    border-left: 10px solid #0000;
+    border-bottom: 300px solid #000;
 }

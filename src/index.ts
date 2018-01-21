@@ -1,12 +1,14 @@
 import { Observable } from 'rxjs/observable';
 import { defer } from 'rxjs/observable/defer';
 import { from } from 'rxjs/observable/from';
+import { timer } from 'rxjs/observable/timer';
 import { of } from 'rxjs/observable/of';
 import { interval } from 'rxjs/observable/interval';
 import { map } from 'rxjs/operators/map';
 import { tap } from 'rxjs/operators/tap';
 import { concat } from 'rxjs/operators/concat';
 import { mergeMap } from 'rxjs/operators/mergeMap';
+import { concatMap } from 'rxjs/operators/concatMap';
 import { takeWhile } from 'rxjs/operators/takeWhile'
 import { animationFrame } from 'rxjs/scheduler/animationFrame';
 
@@ -51,13 +53,20 @@ const moveDown = (el: HTMLElement) => (duration$: Observable<number>) => {
 
 const balls = <NodeListOf<HTMLElement>>document.querySelectorAll('.ball');
 
-from(balls)
+const ballsAnimation$ = from(balls)
     .pipe(
-        mergeMap((ball: HTMLElement, i: number) => {
+        concatMap((ball: HTMLElement, i: number) => {
             return duration$(3000).pipe(moveDown(ball));
         })
-    )
+    );
+
+ballsAnimation$
     .subscribe();
+
+const clock$ = timer(0, 1000)
+    .pipe(
+        map(t => t * 360 / 60)
+    );
 
 
 

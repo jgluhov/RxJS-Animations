@@ -8,7 +8,9 @@ import { map } from 'rxjs/operators/map';
 import { tap } from 'rxjs/operators/tap';
 import { concat } from 'rxjs/operators/concat';
 import { mergeMap } from 'rxjs/operators/mergeMap';
+import { switchMap } from 'rxjs/operators/switchMap';
 import { concatMap } from 'rxjs/operators/concatMap';
+import { pairwise } from 'rxjs/operators/pairwise';
 import { takeWhile } from 'rxjs/operators/takeWhile'
 import { animationFrame } from 'rxjs/scheduler/animationFrame';
 
@@ -32,7 +34,9 @@ const duration$ = (ms: number, scheduler = animationFrame) => {
         );
 };
 
-const elasticOut = (t: number) => {
+type EasingFn = (t: number) => number;
+
+const elasticOut: EasingFn = (t: number) => {
     return Math.sin(-13.0 * (t + 1.0) * 
     Math.PI/2) * 
     Math.pow(2.0, -10.0 * t) + 
@@ -63,13 +67,34 @@ const ballsAnimation$ = from(balls)
 ballsAnimation$
     .subscribe();
 
+const hand = <HTMLElement>document.querySelector('.hand')!;
+
+const tween = (ms: number, easing: EasingFn) => (source$: Observable<number>) => {
+    return source$
+        .pipe(
+            pairwise(),
+            switchMap(([p, n]) => {
+                return duration$(ms)
+                    .pipe(
+                        map(easing), 
+                        map(distance(n - p)),
+                        map(v => n + v)
+                    );
+            })
+        );
+};
+
 const clock$ = timer(0, 1000)
     .pipe(
-        map(t => t * 360 / 60)
+        map(t => t * 360 / 60),
+        tween(900, elasticOut)
     );
 
+clock$.subscribe(degree => {
+    hand.style.transform = `rotate(${degree}deg)`;
+});
 
-
+// tween(900, elasticOut)(clock$).subscribe();
 
 
 

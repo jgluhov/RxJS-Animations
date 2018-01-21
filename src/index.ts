@@ -93,8 +93,3 @@ const clock$ = timer(0, 1000)
 clock$.subscribe(degree => {
     hand.style.transform = `rotate(${degree}deg)`;
 });
-
-// tween(900, elasticOut)(clock$).subscribe();
-
-
-

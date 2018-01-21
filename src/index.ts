@@ -84,12 +84,17 @@ const tween = (ms: number, easing: EasingFn) => (source$: Observable<number>) =>
         );
 };
 
-const clock$ = timer(0, 1000)
+const rotateAnimation$ = (el: HTMLElement) => timer(0, 1000)
     .pipe(
         map(t => t * 360 / 60),
-        tween(900, elasticOut)
+        tween(900, elasticOut),
+        tap(degree => {
+            el.style.transform = `rotate(${degree}deg)`;
+        })
     );
 
-clock$.subscribe(degree => {
-    hand.style.transform = `rotate(${degree}deg)`;
-});
+const handAnimtion$ = of(hand)
+    .pipe(switchMap(rotateAnimation$));
+
+handAnimtion$
+    .subscribe();
